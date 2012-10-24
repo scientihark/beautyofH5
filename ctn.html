@@ -1,0 +1,190 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>peerteach</title>
+    <style>
+	#ctns {
+		background-color:#C5D9FA;
+		position:absolute;
+		top:0px;
+		left:0px;
+		right:0px;
+		bottom:0px;
+	}
+	#ctns section{
+		display:inline-block;
+		margin:10px 10px 10px 10px;
+		-moz-box-shadow:0 0 5px 1px #fff;
+		-webkit-box-shadow: 0 0 5px 1px #fff;
+		box-shadow:  0 0 5px 1px #fff;
+		background-color:#059AEB;
+	font-size:16px;
+	text-align:center;
+	width:120px;
+	height:120px;
+	}
+	#ctns div{
+		display:inline-block;
+		margin:10px 10px 10px 10px;
+		-moz-box-shadow:0 0 5px 1px #fff;
+		-webkit-box-shadow: 0 0 5px 1px #fff;
+		box-shadow:  0 0 5px 1px #fff;
+	font-size:16px;
+	text-align:center;
+	width:50px;
+	height:50px;
+	}
+	#go_blue_btn{
+		background-color:#06F;
+	}
+	#go_red_btn{
+		background-color:#F03;
+	}
+	#go_yellow_btn{
+		background-color:#FF3;
+	}
+	</style>
+</head>
+<body>
+<article id="ctns">
+<section id="go_next" onClick="go_next();">下一步</section>
+<section id="go_prev" onClick="go_prev();">上一步</section>
+<br>
+<div id="go_blue_btn" onClick="go_btn('blue_btn');"></div>
+<div id="go_red_btn" onClick="go_btn('red_btn');"></div>
+<div id="go_yellow_btn" onClick="go_btn('yellow_btn');"></div>
+<br>
+<section id="go_end" onClick="slideend();">断开连接</section>
+</article>
+<script src="assert/js/lib/jquery-1.7.1.min.js"></script>
+<script>
+function go_next(){
+	slidectl("api.next()")
+}
+function go_prev(){
+	slidectl("api.prev()")
+}
+function go_btn(ipt){
+	slidectl("$"+ipt+"();");
+}
+function slidectl(ipt){
+	$.ajax({
+                 type:"POST",
+                 dataType:"json",
+                 url:"api/index.php?way=pushctn",
+				 data:{"ctn":ipt},
+                 timeout:3000,	 
+                 success:function(data,textStatus){
+                     //从服务器得到数据，显示数据并继续查询
+					if(data.flag=="ok"){
+						
+					}else{
+						console.log("0x01 与服务器通信失败");
+					}
+	             },
+				 //Ajax请求超时，继续查询
+	             error:function(XMLHttpRequest,textStatus,errorThrown){
+						console.log("0x00 与服务器连接失败");
+	             }
+                 
+		});
+}
+function slideend(){
+	$.ajax({
+                 type:"GET",
+                 dataType:"json",
+                 url:"api/index.php?way=end",
+                 timeout:3000,	 
+                 success:function(data,textStatus){
+                     //从服务器得到数据，显示数据并继续查询
+					if(data.flag=="ok"){
+						
+					}else{
+						console.log("0x01 与服务器通信失败");
+					}
+	             },
+				 //Ajax请求超时，继续查询
+	             error:function(XMLHttpRequest,textStatus,errorThrown){
+						console.log("0x00 与服务器连接失败");
+	             }
+                 
+		});
+}
+</script>
+
+<!--
+    
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>
+
+<!--
+    
+    Now you know more or less everything you need to build your first impress.js presentation, but before
+    you start...
+    
+    Oh, you've already cloned the code from GitHub?
+    
+    You have it open in text editor?
+    
+    Stop right there!
+    
+    That's not how you create awesome presentations. This is only a code. Implementation of the idea that
+    first needs to grow in your mind.
+    
+    So if you want to build great presentation take a pencil and piece of paper. And turn off the computer.
+    
+    Sketch, draw and write. Brainstorm your ideas on a paper. Try to build a mind-map of what you'd like
+    to present. It will get you closer and closer to the layout you'll build later with impress.js.
+    
+    Get back to the code only when you have your presentation ready on a paper. It doesn't make sense to do
+    it earlier, because you'll only waste your time fighting with positioning of useless points.
+    
+    If you think I'm crazy, please put your hands on a book called "Presentation Zen". It's all about 
+    creating awesome and engaging presentations.
+    
+    Think about it. 'Cause impress.js may not help you, if you have nothing interesting to say.
+    
+-->
+
+<!--
+    
+    Are you still reading this?
+    
+    For real?
+    
+    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
+    to congratulate you personally :)
+    
+    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
+    or anything you like to drink. And raise a glass for me ;)
+    
+    Cheers!
+    
+-->
+
