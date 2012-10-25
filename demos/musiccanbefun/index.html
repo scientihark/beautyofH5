@@ -1,0 +1,332 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<title>Music can be fun - Edan Kwan</title>
+<meta name="distribution" content="global" /> 
+<meta name="language" content="en" /> 
+<meta name="keywords" content="Hong Kong, Edan Kwan, HTML5, Flash, Interactive, Creative" /> 
+<meta name="description" content="A HTML5 app for Dev Plugged contest. It is designed and developed by Edan Kwan" /> 
+<meta name="author" content="Edan Kwan" /> 
+<meta name="geo.placename" content="Hong Kong" /> 
+<meta name="geo.region" content="HK" /> 
+<meta name="geo.position" content="34.885931;128.671875" /> 
+<meta name="ICBM" content="34.885931, 128.671875" /> 
+<meta name="google-site-verification" content="ywZulpEjRMNxwKmE2FkI0YEasdzMs0DxuzQ6-oHL7lw" /> 
+<link rel="icon" href="http://musiccanbefun.edankwan.com/favicon.ico" type="image/vnd.microsoft.icon"/> 
+<link rel="image_src" href="http://musiccanbefun.edankwan.com/thumbnail.jpg" /> 
+	
+<script type="text/javascript" src="js/animation/EKTweener.js"></script>
+<script type="text/javascript" src="js/display/StageReference.js"></script>
+<script type="text/javascript" src="js/display/CanvasMovieClip.js"></script>
+<script type="text/javascript" src="js/loader/EKLoader.js"></script>
+<script type="text/javascript" src="js/utils/DisplayObjectUtil.js"></script>
+<script type="text/javascript" src="js/utils/CanvasUtil.js"></script>
+<script type="text/javascript" src="js/utils/MathUtil.js"></script>
+<script type="text/javascript" src="js/utils/BrowserUtil.js"></script>
+
+<script type="text/javascript" src="js/Main.js"></script>
+<script type="text/javascript" src="js/data/AssetManager.js"></script>
+
+<script type="text/javascript" src="js/display/MouseBlocker.js"></script>
+<script type="text/javascript" src="js/display/BottomBar.js"></script>
+<script type="text/javascript" src="js/display/Preloader.js"></script>
+<script type="text/javascript" src="js/display/BlackOverlay.js"></script>
+<script type="text/javascript" src="js/display/TopBar.js"></script>
+<script type="text/javascript" src="js/display/Panel.js"></script>
+<script type="text/javascript" src="js/display/WhatIsThis.js"></script>
+<script type="text/javascript" src="js/display/Instruction.js"></script>
+<script type="text/javascript" src="js/display/HighestScores.js"></script>
+<script type="text/javascript" src="js/display/Line.js"></script>
+<script type="text/javascript" src="js/display/SectionManager.js"></script>
+<script type="text/javascript" src="js/display/YourScore.js"></script>
+<script type="text/javascript" src="js/display/EnterName.js"></script>
+
+<script type="text/javascript" src="js/display/game/Game.js"></script>
+<script type="text/javascript" src="js/display/game/TimeScale.js"></script>
+<script type="text/javascript" src="js/display/game/Ribbon.js"></script>
+<script type="text/javascript" src="js/display/game/BallManager.js"></script>
+<script type="text/javascript" src="js/display/game/ScoreManager.js"></script>
+<script type="text/javascript" src="js/display/game/BackgroundManager.js"></script>
+<script type="text/javascript" src="js/display/game/CanvasManager.js"></script>
+<script type="text/javascript" src="js/display/game/MusicManager.js"></script>
+<script type="text/javascript" src="js/display/game/SpectrumManager.js"></script>
+<script type="text/javascript" src="js/display/game/SubtitleManager.js"></script>
+<script type="text/javascript" src="js/display/game/BakedImageManager.js"></script>
+<script type="text/javascript" src="js/display/game/FloatImageManager.js"></script>
+
+<style type="text/css">
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: normal;
+  src: local('PT Sans Narrow'), local('PTSans-Narrow'), url('images/PT_Sans-Narrow-Web-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: bold;
+  src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url('images/PT_Sans-Narrow-Web-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Allan';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Allan'), url('images/Allan-Bold.woff') format('woff');
+}
+
+body {font-family: 'PT Sans Narrow', arial, serif; background-color: #EEEEE2; margin: 0px auto;}
+.data {position:absolute; left: 0px;}
+a:link { color: #d9d9d9;}
+a:visited { color: #d9d9d9;}
+a:hover { color: #d9d9d9;}
+a:active { color: #d9d9d9;}
+#top {
+	position: absolute;
+	display: none;
+	width:100%;
+	height:60px;
+	background-color:#000;
+	box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+#top img{
+	float:left;
+	position: relative;
+	margin-left: 20px;
+	margin-top:12px;
+}
+#top span{
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	float:right;
+	color: #d9d9d9;
+	position: relative;
+	margin-top: 32px;
+	margin-right: 30px;
+}
+#bottom {
+	position: absolute;
+	display: none;
+	width:100%;
+	height:60px;
+	background-color:#000;
+	box-shadow: 0px -5px 0px rgba(0, 0, 0, 0.1);
+}
+#bottom span{
+	font-size: 12px;
+	color: #d9d9d9;
+	position: relative;
+	margin-top: 24px;
+	margin-right: 30px;
+	float:right;
+}
+.instruction_line{
+	position: absolute;
+	left: -116px;
+	font-size: 14px;
+	color: #a0a0a0;
+}
+.instruction_line div{
+	position: absolute;
+	background-image:url(images/instruction_bullet.png);
+	text-align:center;
+	width: 26px;
+	height: 22px;
+	padding-top: 4px;
+}
+.instruction_line p{
+	position: absolute;
+	width: 205px;
+	margin-top: -2px;
+	margin-left: 37px;
+}
+#instruction_title{
+	position: absolute;
+	top: -115px;
+	left: -85px;
+	text-align:center;
+	width: 170px;
+	font-size: 30px;
+	color: #606060;
+	border-bottom-style: solid;
+	border-bottom-color: #dddddd;
+	border-bottom-width: 1px;
+	padding-bottom: 8px;
+}
+#instruction_icons{
+	position: absolute;
+	top: 110px;
+	left: -100px;
+	width: 200px;
+	text-align:center;
+	
+}
+#instruction_icons img{
+	margin: 2px;
+}
+#what_is_this_title{
+	position: absolute;
+	top: 30px;
+	left: 100px;
+	text-align:center;
+	width: 170px;
+	font-size: 30px;
+	color: #606060;
+	border-bottom-style: solid;
+	border-bottom-color: #dddddd;
+	border-bottom-width: 1px;
+	padding-bottom: 8px;
+}
+#what_is_this_content{
+	position: absolute;
+	text-align:center;
+	width: 260px;
+	top: 79px;
+	left: 55px;
+	font-size: 14px;
+	line-height: 17px;
+	color: #a0a0a0;
+}
+#highest_scores_title{
+	position: absolute;
+	top: 30px;
+	left: 85px;
+	text-align:center;
+	width: 170px;
+	font-size: 30px;
+	color: #606060;
+	border-bottom-style: solid;
+	border-bottom-color: #dddddd;
+	border-bottom-width: 1px;
+	padding-bottom: 8px;
+}
+#highest_scores_content{
+	position: absolute;
+	text-align:center;
+	width: 200px;
+	top: 220px;
+	left: 70px;
+	font-size: 14px;
+	color: #a0a0a0;
+}
+#contact a{
+	text-decoration: none;
+	color: #a8a8a8;
+}
+#contact a:hover { color: #888888;}
+#highest_scores_table{
+	position: absolute;
+	text-align:center;
+	font-size: 14px;
+	color: #a0a0a0;
+}
+</style>
+</head>
+<body onLoad="Main.init();"><!-- oncontextmenu="return false;">-->
+<img src="thumbnail.jpg" style="display:none" alt="thumbnail"/>
+<!-- no HTML5 -->
+<div id="nohtml5" style="display: none;">
+<table width="102%" border="0" cellpadding="0" cellspacing="0" style=" margin:auto;width:100%;height:100%; text-align:center">
+  <tr>
+    <td><p style="font-size:24px">Your browser is not up to date and does not support the HTML5 functions we used in this app.<br />
+      Please update your browser and experience the power of HTML5.</p>
+      <a href="http://www.microsoft.com/downloads/en/default.aspx" target="new"><img src="images/ie9.png" width="64" height="64" border="0" /></a><a href="http://www.mozilla.com/" target="new"><img src="images/firefox.png" width="64" height="63" border="0" style="margin-left:10px;margin-right:10px;" /></a><a href="http://www.google.com/chrome" target="new"><img src="images/chrome.png" width="64" height="63" border="0" /></a>
+<p style="font-size:12px;color:#666">I strongly recommend you using Internet Explorer 9 for the better performance.</p></td>
+  </tr>
+</table>
+</div>
+<div id="stage">
+<!-- top bar -->
+<div id="top"><img src="images/logo.gif" alt="Music can be fun" width="73" height="36" /><span id="highest_scores_btn">HIGHEST SCORES</span><span id="instruction_btn">INSTRUCTION</span><span style="color:#c01919"id="what_is_this_btn">WHAT IS THIS?</span></div>
+
+<!-- panel -->
+<div id="panel" style="display:none;background-color: #FFF;position:absolute;top:80px;width:220px;height:80px;padding:8px;box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);"><div id="panel_clip" style="width:220px;position:absolute;clip:rect(0px, 220px, 80px, 0px);"><img style="cursor: pointer"id="panel_logo" src="images/ra_ra_riot_logo.gif" width="220" height="80" alt="Ra Ra Riot" /><br/>
+<h2 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:2px">BOY</h2>
+<p style="margin-left:8px;margin-right:8px;margin-top:0px;margin-bottom:0px;line-height:15px">
+<span style="font-size:18px">Ra Ra Riot</span><span style="font-size:12px"> is an American indie rock band from Syracuse, New York, consisting of vocalist Wes Miles, bassist Mathieu Santos, guitarist Milo Bonacci, cellist Alexandra Lawn, violinist Rebecca Zeller, and drummer Gabriel Duquette.</span><p style="margin-top:10px;margin-right:8px;text-align:right">
+<a href="http://www.facebook.com/rarariot" target="new"><img name="btn" src="images/fb_icon.png" width="22" height="22" alt="facebook" border="0" /></a>
+<a href="http://twitter.com/#!/RaRaRiot" target="new"><img name="btn" src="images/twitter_icon.png" width="22" height="22" alt="twitter" border="0" /></a>
+<a href="http://www.rarariot.com/" target="new"><img name="btn" src="images/link_icon.png" width="22" height="22" alt="link" border="0"  /></a></p></p></div></div>
+
+<!-- instruction -->
+<div style="display:none;">
+<div id="instruction_title">Instruction</div>
+
+<div class="instruction_line" style="top:-53px">
+	<div>1</div>
+    <p>Use your mouse to collect the blue balls and avoid the red balls.</p>
+</div>
+<div class="instruction_line" style="top:-4px">
+	<div>2</div>
+    <p>Enter the combo mode to get more scores after you collected 5 blue balls in a row.</p>
+</div>
+<div class="instruction_line" style="top:45px">
+	<div>3</div>
+    <p>The annoying background will show up once you hit on the red ball. Hit a blue ball to get rid of it!</p>
+</div>
+
+</div>
+
+
+
+<!-- what_is_this -->
+<div id="what_is_this" style="position:absolute; display:none">
+<div id="what_is_this_title">What is this?</div>
+<div id="what_is_this_content"><p>This is an experimental HTML5 app for the Dev Unplugged contest. This app used a lot of canvas and svg elements and you can see the amazing visual effects on your plug-in free browsers. I strongly recommend you using Internet Explorer 9 to experience the power of the hardware acceleration.</p><p style="margin-top:-5px">
+My name is Edan Kwan and I was a Flash developer. It is my first time coming out of my comfort zone and try HTML5. I am still a beginner in web development that I haven't learned Jquery yet. But I love to keep improving my skills and try pushing the boundry of the interactive world.</p></div>
+</div>
+
+<div id="contact" style="position:absolute; display:none; top: 380px;font-size: 14px; opacity: 0">
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="contact_link" href="http://www.facebook.com/pages/edankwancom/162730773753542" target="new">facebook</a><br />
+&nbsp;&nbsp;&nbsp;<a class="contact_link" href="http://www.linkedin.com/in/edankwan" target="new">linkedin</a><br />
+&nbsp;&nbsp;<a class="contact_link" href="http://twitter.com/#!/edankwan" target="new">twitter</a><br />
+&nbsp;<a class="contact_link" href="http://www.edankwan.com/" target="new">www</a><br />
+<a class="contact_link" href="http://blog.edankwan.com/" target="new">blog</a>
+</div>
+
+<!-- highest_scores -->
+<div id="highest_scores" style="display: none; left: -10px; top: 100px;">
+<div id="highest_scores_title">Highest Scores</div>
+<div id="highest_scores_table" style="opacity:0;left:57px;top:95px;"></div>
+<p id="highest_scores_content">You think that you can do it better these guys? Come on, just play the game and take them down.</p>
+</div>
+
+<!-- bottom bar -->
+<div id="bottom">
+<div style="position:absolute;left:20px;top:20px">
+<a href="https://microsoft.promo.eprize.com/ie9app/gallery?id=268" target="new"><img style="margin-right:4px" src="images/vote_btn.png" border="0" width="48" height="21"/></a>
+</div><span id="copyright">© Copyright <a href="http://www.edankwan.com/">Edan Kwan</a> 2011 - Designed & Developed by <a href="http://www.edankwan.com/">Edan Kwan</a></span></div>
+</div>
+
+
+<!-- mouse blocker -->
+<table id="mouseBlocker" style="position: absolute; display: none; background-color: rgba(0,0,0,0); width: 0px; height:0px"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+
+<!-- enter name -->
+<div id="enter_name" style="display: none; position: absolute; left:-90px;top:-90px;width:180px; text-align:center">
+<p style="color: #606060;font-size: 20px;margin-bottom:14px">What is your name?</p>
+<input id="enter_name_name" type="text" style="width:150px; text-align:center; font-family:'PT Sans Narrow', arial, serif;color:#aaa" value="" maxlength="20" />
+<p id="enter_name_reminder" style="color:#aaaaaa; font-size:11px; width:140px;margin-left:auto;margin-right:auto;margin-top:14px">Please enter a valid name with 6-20 letters. Only accept alphabets, numbers, spaces and dots.</p>
+<img id="enter_name_btn" style="opacity:.6; cursor:pointer" src="images/enter_btn.png" />
+</div>
+
+
+<!-- your score -->
+<div id="your_score" style="display: none;position: absolute; left:-90px;top:-90px;width:180px; text-align:center">
+<p style="color:#606060;font-size: 20px;margin-bottom:0px">Your score is:</p>
+<p id="your_score_score"style="color:#4f4f4f;font-size: 30px;margin-top:3px;margin-bottom:0px; font-weight:bold">28000</p>
+<p style="color:#aaaaaa; font-size:11px; width:140px;margin-left:auto;margin-right:auto;margin-top:3px;">Press next to check if your name is on our highest score table!</p>
+<img id="your_score_btn" style="opacity:.6; cursor:pointer" src="images/next_btn.png" />
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1001 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
+		
+		<style type="text/css">
+			@font-face {
+ font-family: 'cinnamon cake';
+ font-style: normal;
+ font-weight: normal;
+ src: local('cinnamon cake'),url('../../assert/fonts/cinnamoncake.woff') format('woff'),url('../../assert/fonts/cinnamoncake.ttf') format('truetype'),url('../../assert/fonts/cinnamoncake.svg#cinnamoncake') format('svg');
+}
+@font-face {
+ font-family: '经典行书简';
+ font-style: normal;
+ font-weight: normal;
+ src: local('经典行书简'),url('../../assert/fonts/webxin.woff') format('woff'),url('../../assert/fonts/webxin.ttf') format('truetype'),url('../../assert/fonts/webxin.svg#regular') format('svg');
+}
+#h5powered{
+	bottom:5px;
+	left:5px;
+	position:absolute;
+}
+			body {
+				font-family: '经典行书简';
+				background-color: #000;
+				
+				margin: 0px;
+				overflow: hidden;
+			}
+			
+			#textoverlay {
+				
+				font-family: '经典行书简', sans-serif;
+				color:#666;
+				font-size: 28px;
+				text-shadow: 22px 22px 12px rgba(35,35,35,0.5);
+			
+				/*  box-shadow: 5px 5px 5px rgba(68,68,68,0.5);*/
+				position:absolute;
+				top: 20%;
+				width:100%;
+				left:0;
+				right:0;
+				text-align:center;
+			}
+			
+			a {
+
+				text-decoration: none;
+				border-radius: 15px;
+				padding-left: 10px ;
+				padding-right: 10px ;
+				border: 1px solid grey;
+				color: black;			
+			}
+			
+			a:hover {
+				opacity:0.5;
+			}
+			
+			.button {
+				padding: 10px 25px 10px 25px ;
+				margin: 20px;
+				background: -moz-linear-gradient(top, rgba(30, 30, 30, 0.1) 0%, rgba(20, 20, 20, 0.1) 50%, rgba(10, 10, 10, 0.1) 50%, rgba(0, 0, 0, 0.1) 100%);
+				background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(130, 130, 130, 0.1)), color-stop(0.5, rgba(120, 120, 120, 0.1)), color-stop(0.5, rgba(110, 110, 110, 0.1)), color-stop(1, rgba(10, 10, 10, 0.1)));
+			}
+		
+		
+			.titleFade {
+				opacity: 0;
+				-webkit-transition: all 1s ease-in-out ;
+				-moz-transition: all 1s ease-in-out;
+			}
+
+			.title {
+				font-size:40px;
+			}
+
+			.smaller {
+				font-size: 20px;
+			}
+			
+			
+			.prepareStage {
+				left: 700px;
+				opacity:0;
+				text-shadow: rgba(35,35,35,1) 0 0 100px;
+				color: rgba(255,255,255,0);
+			
+			}
+			
+			.fadeIn {
+
+		        left: 550px;
+		        opacity:1;
+			  
+				text-shadow: rgba(35,35,35,0.5) 22px 22px 12px;
+		        
+		        /* text-shadow: #999 0 0 0px;*/
+		        -webkit-transition: all 2s ease-in-out;
+		        -moz-transition: all 2s ease-in-out;
+
+			}
+			
+			.fadeOut {
+		        left: 450px;
+		 		opacity:0;
+				text-shadow: rgba(35,35,35,1) 0 0 100px;
+				-webkit-transition: all 2s ease-out ;
+				-moz-transition: all 2s ease-out;
+				 color: rgba(255,255,255,0);
+				
+			}
+
+		    
+			.actionShow {
+			    display:block;
+			}
+			
+			.action {
+				color:#444;
+				font-size: 34px;
+				font-weight:bold;
+				
+				font-family: '经典行书简', sans-serif;
+				position:absolute;
+				top: 80%;
+				white-space:nowrap;
+				
+			}
+
+			.actionHide {
+			    display:none;
+			}
+		    
+			#debug {
+				position:absolute;
+				font-family: '经典行书简', sans-serif;
+				z-position: 10;
+				top: 10px;
+				
+				left: 10px;
+			}
+			#pt_tittle{
+				position:absolute;
+				top:20px;
+				left:500px;
+				width:400px;
+				height:300px;
+				z-index:99999;
+				-webkit-perspective: 600px;
+         -moz-perspective: 600px;
+           -o-perspective: 600px;
+              perspective: 600px;
+			}
+			#pt_tittle section{
+				text-align:center;
+				transition: all 5s ease-in-out;
+	-moz-transition: all 5s ease-in-out;
+	-webkit-transition: all 5s ease-in-out;
+	-o-transition: all 5s ease-in-out;
+			}
+			#pt_tittle_m{
+				font-size:90px;
+				font-family: 'cinnamon cake';
+			}
+			#pt_tittle_s{
+				font-size:64px;
+			}
+			#pt_tittle_c{
+				font-size:64px;
+			}
+			#pt_tittle_v{
+				font-family: 'cinnamon cake';
+			}
+			#pt_tittle_v,#pt_tittle_t{
+				font-size:32px;
+				margin-top:10px;
+			}
+			#pt_tittle_s b{
+				font-family: 'cinnamon cake';
+				font-size:80px;
+				color:#0CC;
+				
+			}
+			#pt_tittle_c b{
+				font-size:80px;
+				color:#36F;
+				
+			}
+			.pt_tittle_0{
+				 -webkit-transform: rotateY( -25deg ) rotateX( 10deg );
+         -moz-transform: rotateY( -25deg ) rotateX( 10deg );
+           -o-transform: rotateY( -25deg ) rotateX( 10deg );
+              transform: rotateY( -25deg ) rotateX( 10deg );
+			  text-shadow: 3px 3px 5px rgba(100,100,100,0.9);  
+			}
+			.pt_tittle_1{
+				 -webkit-transform: rotateY( 25deg ) rotateX( -10deg );
+         -moz-transform: rotateY( 25deg ) rotateX( -10deg );
+           -o-transform: rotateY( 25deg ) rotateX( -10deg );
+              transform: rotateY( 25deg ) rotateX( -10deg ); 
+			  text-shadow: -3px -3px 5px rgba(100,100,100,0.9); 
+			}
+		
+		</style>
+	</head>
+	<body>
+	
+		<div id="loading" class="title" style="color: white; text-align:center; width:100%; height:100%;">
+            Loading... Please wait...
+			<div class="smaller">Are you using a decent machine with a updated browser (Chrome 14 / Firefox 6)? Crossing fingers...</div>
+        </div>
+	  <!-- storyline -->
+
+       	<div class="action" time="2 5">
+            <span style="font-size:34px">HTML5--<span>
+        </div>
+<div class="action" time="5 11">
+            <span style="font-size:34px">感受那一抹惊艳.<span>
+        </div>
+
+		<div class="action" time="11 14">
+            HTML5--,
+        </div>
+
+        <div class="action" time="14 18">
+        	一个时代的曙光. 
+        </div>
+
+		<div class="action" time="25 29">
+        它.
+        </div>
+
+		<div class="action" time="30 35">
+        不只是一门语言,
+        </div>
+
+		<div class="action" time="35.5 40">
+        还是.
+        </div>
+
+		<div class="action" time="41 45">
+			WEB应用的新起点...
+		</div>
+		
+		<div class="action" time="45.5 49">
+			云端时代的.
+		</div>
+		
+		
+		<div class="action" time="50 54">
+			里程碑,
+		</div>
+		
+		<div class="action" time="61.5 62">
+			它,
+		</div>
+<div class="action" time="62.5 65">
+			携手Canvas,
+		</div>
+		
+		<div class="action" time="65.5 69">
+			让WEB绽放异彩...
+		</div>
+		
+		
+	   <!-- end storyline -->
+					
+			<div id="debug"> </div>
+			<div id="textoverlay">
+				<a href="#" onclick="musicStart(); return false" id="startMusicButton">.</a>
+			</div>
+            <article id="pt_tittle">
+            	<section id="pt_tittle_m">HTML5</section>
+                <section id="pt_tittle_s">舞动<b>WEB</b>的</section>
+                <section id="pt_tittle_c">那一抹<b>惊艳</b></section>
+                <section id="pt_tittle_v">scientihark</section>
+                <section id="pt_tittle_t">带您领略</section>
+            </article>
+             <a href="http://www.w3.org/html/logo/">
+<img id="h5powered" src="../../assert/img/html5-badge-h-connectivity-css3-graphics-multimedia-semantics.png" width="261" height="64" alt="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Graphics, 3D &amp; Effects, Multimedia, and Semantics" title="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Graphics, 3D &amp; Effects, Multimedia, and Semantics">
+</a>
+            <script>
+			setTimeout("pt_m('pt_tittle_m');",1000);
+			setTimeout("pt_m('pt_tittle_s');",1500);
+			setTimeout("pt_m('pt_tittle_c');",2000);
+			setTimeout("pt_m('pt_tittle_v');",2500);
+			setTimeout("pt_m('pt_tittle_t');",3000);
+            function pt_m(ipt){
+				$ipt=document.getElementById(ipt);
+				if($ipt.className=="pt_tittle_0"){
+					$ipt.className="pt_tittle_1";
+				}else{
+					$ipt.className="pt_tittle_0";
+				}
+				var $tt=function(){pt_m(ipt);};
+				setTimeout($tt,5500);
+			}
+            
+            </script>
+
+		<script type="text/javascript" src="Three.js"></script>
+
+		<script type="text/javascript" src="RequestAnimationFrame.js"></script>
+		<script type="text/javascript" src="Tween.js"></script>
+		<script type="text/javascript" src="Sparks.js"></script>
+		
+		<script type="text/javascript" src="ShaderExtras.js"></script> 
+		<script type="text/javascript" src="EffectComposer.js"></script> 
+		<script type="text/javascript" src="RenderPass.js"></script> 
+		<script type="text/javascript" src="ShaderPass.js"></script> 
+		<script type="text/javascript" src="MaskPass.js"></script>
+		<script type="text/javascript" src="TexturePass.js"></script> 
+
+		<script type="text/javascript" src="AudioKeys.js"></script>
+
+		<script>
+		/*
+		 * Changelog
+		 *  - added text captions
+		 *  - fps analytics
+		 *  - add start Menu
+		 *  - Added css3 blurs and shadows
+		 *  - Added fonts
+		 *  - Fix noteOn for noteGrainOn
+		 *  - More tweak to parameters
+		 *  - Hue color change speed controlled by emitter's rate 
+		 *  - Cleanup
+		 *  - Move Turbulence to using Simplex 4D Noise in Shaders
+		 *  - Turbulence Sparks Action using SimplexNoise
+		 *  - experimented Wind Action
+		 *  - experimented Spiral Wind
+		 *  - new pools
+		 * 
+		 * TODO
+		 * Calibrate Firefox Levels
+		 * Flash Fallback, no?
+		 * Shadows
+		 * 
+		 */
+		</script>
+	
+		<!-- Simplex Noise vertex shader -->
+		<script type="text/javascript" src="simplex.js"></script>
+
+		<!-- vertex shader for particles -->
+		<script type="x-shader/x-vertex" id="vertexshader">
+		
+		uniform float timings;
+		uniform float dispX;
+		uniform float dispY;
+		uniform float dispZ;
+		uniform float amount;
+
+
+		attribute float size;
+		attribute vec3 pcolor;
+		varying vec3 vColor;
+
+		void main() {
+
+			vec3 pos = vec3( position.x + dispX, position.y + dispY, position.z + dispZ );
+			float displace = snoise( vec4(pos / 1000.0, timings) );
+			displace = snoise( vec4(pos * displace / 500.0, timings) );
+			displace = snoise( vec4(pos * displace / 100.0, timings) );
+			vColor = pcolor;
+			
+			// Use displayment from turbulence
+			vec4 mvPosition = modelViewMatrix *  vec4( position + ( normalize( position ) * displace * amount ), 1.0 );
+
+			gl_PointSize = size * ( 200.0 / length( mvPosition.xyz ) );
+
+			gl_Position = projectionMatrix * mvPosition;
+
+		}
+
+
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+
+			uniform sampler2D texture;
+			varying vec3 vColor;
+
+			void main() {
+
+				float depth = gl_FragCoord.z / gl_FragCoord.w;
+				vec4 outColor = texture2D( texture, gl_PointCoord );
+				gl_FragColor = outColor * vec4( vColor, smoothstep( 500.0, - 500.0, depth )  );
+
+			}
+
+		</script>
+
+		<!-- Main Javascript block -->
+		<script type="text/javascript">
+		
+			var container;
+			var camera, scene, renderer;
+
+			var text, plane;
+
+			var huespeed = 0.25; // hue change factor
+
+			var targetRotation = 0;
+			var targetRotationOnMouseDown = 0;
+
+			var mouseX = 0;
+			var mouseXOnMouseDown = 0;
+
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+			
+			var targetY = 0, mouseY = 0, targetZ = 0;
+
+			var fullstart = Date.now();
+
+			var uAmount2 = 20; // Simplex noise ammount
+			var dispY = 4; // 100 2000
+			var dispZ = 4; // 100 2000
+			var dispX = 4;
+
+			var actions = document.querySelectorAll(".action");
+		    var timelines = [];
+			
+			var playingTime, lastUpdateTime = 0;
+
+			var particleCloud, sparksEmitter, emitterpos;
+			
+			var startMusicButton = document.getElementById( 'startMusicButton' );
+			var showStats = false;
+			var debugDiv = document.getElementById( 'debug' );
+			
+			var fpsCount = 0;
+			
+			var audioKeys ;
+			
+			
+			
+			audioKeys = new AudioKeys('arabesque1.ogg');
+			startMusicButton.innerHTML = 'Loading...';
+			init();
+			animate();
+			
+			
+			audioKeys.load( function() {
+				musicReady();
+			});
+
+			
+			
+			function musicReady() {
+				
+				startMusicButton.innerHTML = "Start the Music!";
+			}
+			
+			function musicStart() {
+				
+				var textMenu = document.getElementById( 'textoverlay' );
+				textMenu.className = 'titleFade';
+				
+				setTimeout(function() {
+					textMenu.setAttribute('style', 'display:none');
+					audioKeys.play();
+				}, 1000);
+			
+			}
+			
+			
+			function init() {
+				// Text Captions
+				for (var i=actions.length; i--; ) { 
+			        action = actions[i];
+			        timings = action.getAttribute('time').split(' ');
+			        timelines[i] = {
+			            start: parseFloat(timings[0]) ,
+			            end: parseFloat(timings[1])
+			        };
+			        action.className = 'actionHide action';
+					
+			    }
+			
+				document.getElementById('loading').setAttribute('style', 'display:none');
+				// AudioKeys monitors
+				
+				audioKeys.addWatchers(11, 107, 8, 122);
+				audioKeys.addWatchers(173, 308, 10, 48);
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				// Camera
+
+				camera = new THREE.Camera( 70, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.y = 150;
+				camera.position.z = 400;
+				camera.target.position.y = 150;
+
+				// Scene
+
+				scene = new THREE.Scene();
+
+				var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+				directionalLight.position.set( 0, -1, 1 );
+				directionalLight.position.normalize();
+				scene.add( directionalLight );
+
+
+				parent = new THREE.Object3D();
+				scene.add( parent );
+
+				// Create particle objects for Three.js
+
+				var particlesLength = 8000;
+
+				var particles = new THREE.Geometry();
+
+				function newpos( x, y, z ) {
+
+					return new THREE.Vertex( new THREE.Vector3( x, y, z ) );
+
+				}
+
+
+				var Pools = function() {
+					this.__pools = [];
+				};
+
+				// steal
+				Pools.prototype.get = function() {
+					var pool = this.__pools;
+					if ( pool.length > 0 ) {
+						return pool.pop();
+					}
+				};
+
+				// free / release
+				Pools.prototype.add = function(v) {
+					this.__pools.push( v );
+				};
+
+				var Pool = new Pools();
+
+
+				for ( i = 0; i < particlesLength; i ++ ) {
+
+					particles.vertices.push( newpos( Math.random() * 200 - 100, Math.random() * 100 + 150, Math.random() * 50 ) );
+					Pool.add( i );
+
+				}
+
+
+				// Create pools of vectors
+
+				attributes = {
+
+					size:  { type: 'f', value: [] },
+					pcolor: { type: 'c', value: [] }
+					
+				
+				};
+
+				var sprite = generateSprite() ;
+
+				texture = new THREE.Texture( sprite );
+				texture.needsUpdate = true;
+
+				uniforms = {
+
+					texture:   { type: "t", value: 0, texture: texture },
+					"dispX": { type: "f", value: 0 },
+					"dispY": { type: "f", value: 0 },
+					"dispZ": { type: "f", value: 0 },
+					"amount": { type: "f", value: 0 },
+					"timings": { type: "f", value: 0 }
+				};
+				
+				// Create gradient sprites
+				function generateSprite() {
+
+					var canvas = document.createElement( 'canvas' );
+					canvas.width = 128;
+					canvas.height = 128;
+
+					var context = canvas.getContext( '2d' );
+
+					context.beginPath();
+					context.arc( 64, 64, 60, 0, Math.PI * 2, false) ;
+					context.closePath();
+
+					context.lineWidth = 0.5; //0.05
+					context.stroke();
+					
+					var gradient = context.createRadialGradient( canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2 );
+
+					gradient.addColorStop( 0, 'rgba(255,255,255,1)' );
+					gradient.addColorStop( 0.2, 'rgba(255,255,255,1)' );
+					gradient.addColorStop( 0.4, 'rgba(200,200,200,1)' );
+					gradient.addColorStop( 1, 'rgba(0,0,0,1)' );
+
+					context.fillStyle = gradient;
+					context.fill();
+
+					return canvas;
+
+				}
+
+
+				var shaderMaterial = new THREE.ShaderMaterial( {
+
+					uniforms: 		uniforms,
+					attributes:     attributes,
+
+					vertexShader:   simplexVertexShader + document.getElementById( 'vertexshader' ).textContent,
+					fragmentShader: document.getElementById( 'fragmentshader' ).textContent,
+
+					blending: 		THREE.SubtractiveBlending,
+					depthWrite:		false,
+					transparent:	true
+
+				});
+
+				particleCloud = new THREE.ParticleSystem( particles, shaderMaterial );
+
+				particleCloud.dynamic = true;
+				
+				var vertices = particleCloud.geometry.vertices;
+				var values_size = attributes.size.value;
+				var values_color = attributes.pcolor.value;
+				
+				// Create hidden vertices
+				for( var v = 0; v < vertices.length; v ++ ) {
+
+					//values_size[ v ] = 50;
+					values_color[ v ] = new THREE.Color( 0xffffff );
+					values_color[ v ].setHSV( 0, 0, 0 );
+					
+					particles.vertices[ v ].position.set( Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY );
+					
+				}
+
+				parent.add( particleCloud );
+				particleCloud.y = 800;
+
+
+				// Create Particle Systems
+
+				// Sparks.js Emitter Stuff
+				
+				var hue = 0;
+				var particleSizeRandom = 120; //100
+				var particleSizeStart = 40; //50
+				var yDiffFactor = 30; //20
+				var yCurrentDiffFactor = 0; //4
+				var yTargetLevel = 100;
+				var targetLevelMultiplier = 300;
+				var peakHeightFalloff = 0.8;
+
+				var levels;
+				var previousHeight = 0;
+				var peakHeight = 0;
+				var time;
+				var effectVignette;
+				
+ 				
+				var setTargetParticle = function() {
+
+					var target = Pool.get();
+					values_size[ target ] = Math.random() * particleSizeRandom + particleSizeStart ;
+					return target;
+
+				};
+
+				var onParticleCreated = function( p ) {
+
+					var position = p.position;
+					p.target.position = position;
+
+					var target = p.target;
+
+					if ( target ) {
+
+						hue += huespeed / producer.rate ;
+						if ( hue > 1 ) hue -= 1;
+
+						particles.vertices[ target ].position = p.position;
+
+						values_color[ target ].setHSV( hue, 1, 0.1 );
+
+					};
+
+				};
+
+				var onParticleDead = function( particle ) {
+
+					var target = particle.target;
+
+					if ( target ) {
+
+						// Hide the particle
+
+						values_color[ target ].setHSV( 0, 0, 0 );
+						particles.vertices[ target ].position.set( Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY );
+
+						// Mark particle system as available by returning to pool
+
+						Pool.add( particle.target );
+
+					}
+
+				};
+
+
+				
+				var engineLoopUpdate = function() {
+					audioKeys.process();
+					levels =  audioKeys.getLevels(0) * 0.5 + audioKeys.getLevels(1) * 0.7 ;
+					
+					var targetlevel = levels* targetLevelMultiplier ;
+					
+					if (targetlevel > peakHeight) {
+						peakHeight = targetlevel;
+					} else {
+						peakHeight *= peakHeightFalloff;
+					}
+					
+					var diff = peakHeight - emitterpos.y;
+					emitterpos.y += diff * 0.07;	
+					
+					var truediff = emitterpos.y - previousHeight;
+					
+					var currentdiff = emitterpos.y - targetlevel;
+					
+					emitterdir.y = 
+						truediff * yDiffFactor +
+						currentdiff * yCurrentDiffFactor +
+						levels * 100 ; 
+					
+					previousHeight = emitterpos.y ;
+
+					producer.rate = 400 + (truediff + 0.25) * 200 ;
+					
+				
+					time = Date.now() * 0.00000001 ;
+
+					uniforms.dispX.value =dispX;
+					uniforms.dispY.value =dispY;
+					uniforms.dispZ.value =dispZ;
+					uniforms.amount.value = uAmount2 + levels *5;
+					uniforms.timings.value = time;
+					
+					
+					//acceleration.x = -100 - levels *10;
+					//emitterdir.x = -100 - levels * 5;
+					//effectVignette.uniforms[ "offset" ].value = 0.95 + levels * 0.12;
+					//effectVignette.uniforms[ "darkness" ].value = 1.6  - levels * 0.3;
+					
+					
+				};
+
+				
+				
+				producer = new SPARKS.SteadyCounter( 400 ); //2000
+				sparksEmitter = new SPARKS.Emitter( producer );
+
+				emitterpos = new THREE.Vector3( 200, 0, 0 );
+				emitterdir=  new THREE.Vector3( -80, 0, 10 )
+				
+				sparksEmitter.addInitializer( new SPARKS.Position( new SPARKS.CubeZone( emitterpos, 50, 50, 50 ) ) );
+				
+				lifetime = new SPARKS.Lifetime( 1, 3 );
+				sparksEmitter.addInitializer( lifetime );
+				sparksEmitter.addInitializer( new SPARKS.Target( null, setTargetParticle ) );
+
+				sparksEmitter.addInitializer( new SPARKS.Velocity( new SPARKS.PointZone( emitterdir ) ) );
+
+				sparksEmitter.addAction( new SPARKS.Age() );
+				acceleration = new SPARKS.Accelerate( -100, 10, 0 ) ;
+				sparksEmitter.addAction(acceleration );
+				sparksEmitter.addAction( new SPARKS.Move() );
+				//sparksEmitter.addAction( new SPARKS.AccelerateFactor( 100 ) );
+				//sparksEmitter.addAction( new SPARKS.RandomDrift( 5, 5, 10 ) );
+				
+
+				acceleration = acceleration.acceleration;
+				
+			
+				sparksEmitter.addCallback( "created", onParticleCreated );
+				sparksEmitter.addCallback( "dead", onParticleDead );
+				sparksEmitter.start();
+
+				sparksEmitter.addCallback("loopUpdated", engineLoopUpdate);
+
+				renderer = new THREE.WebGLRenderer();
+				
+				renderer.setSize( window.innerWidth , window.innerHeight );
+
+				renderer.setClearColorHex( 0xffffff, 1 );
+
+				container.appendChild( renderer.domElement );
+			
+				// Post Processing Filters
+			
+				effectVignette = new THREE.ShaderPass( THREE.ShaderExtras[ "vignette" ] );
+				effectVignette.uniforms[ "offset" ].value = 0.95;
+				effectVignette.uniforms[ "darkness" ].value = 1.6;
+				
+	
+				var renderScene = new THREE.RenderPass( scene, camera );
+
+				composer = new THREE.EffectComposer( renderer );
+				composer.addPass( renderScene );
+				composer.addPass( effectVignette );
+				
+				effectVignette.renderToScreen = true;
+
+				renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				renderer.domElement.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				renderer.domElement.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+					
+				window.addEventListener( 'resize', function() {
+				
+					renderer.setSize( window.innerWidth , window.innerHeight );
+					camera.aspect	= window.innerWidth / window.innerHeight;
+					
+					windowHalfX = window.innerWidth / 2;
+					windowHalfY = window.innerHeight / 2;
+
+
+					camera.updateProjectionMatrix();
+							
+				}, false );
+			}
+
+			//
+
+			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+
+			function onDocumentMouseDown( event ) {
+
+				event.preventDefault();
+
+			}
+			
+
+
+			function onDocumentMouseMove( event ) {
+
+				mouseX = event.clientX - windowHalfX;
+
+				targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.005;
+				
+				mouseY = (event.clientY - windowHalfY) / windowHalfY;
+				
+				targetY = mouseY * 200 + 230; //mouseX/windowHalfX mouseY
+				targetZ = mouseY * 200 + 300;
+
+			}
+
+			function onDocumentTouchStart( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+					targetRotationOnMouseDown = targetRotation;
+
+				}
+
+			}
+
+			function onDocumentTouchMove( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+					targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.01;
+
+				}
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+				render();
+			
+			}
+
+	
+			// Handles text captions
+			function getActions(currentTime, lastTime) {
+		        // get all start time and end times in seconds
+		        for (i=actions.length; i--; ) { 
+		            timings = timelines[i];
+		            start = timings.start;
+		            end = timings.end;
+		            insert = timings.start - 0.5;
+		            remove = timings.end + 2;
+
+		            if ( insert > lastTime && insert <= currentTime ) {
+		                // console.log('insert' , i);
+		                actions[i].className = 'prepareStage action';
+					
+		            }
+
+		            if ( start > lastTime && start <= currentTime ) {
+		                // console.log('start' , i);
+		                actions[i].className = 'fadeIn action';
+		            }
+
+		            if ( end > lastTime && end <= currentTime ) {
+		                // console.log('end' , i);
+		                //actions[i].setAttribute('style', 'left: 10px;');
+		                actions[i].className = 'fadeOut action';
+
+		            }
+		
+					if ( remove > lastTime && remove <= currentTime ) {
+		                // console.log('remove' , i);
+		                actions[i].className = 'actionHide';
+
+		            }
+		        }
+
+		        // certainly can optimize
+		    };
+			
+			
+			function render() {
+
+				particleCloud.geometry.__dirtyVertices = true;
+
+				attributes.size.needsUpdate = true;
+				attributes.pcolor.needsUpdate = true;
+				
+				parent.rotation.y += ( targetRotation - parent.rotation.y ) * 0.01;
+				camera.position.y += (targetY - camera.position.y)  * 0.01 ;
+				camera.position.z += (targetZ - camera.position.z)  * 0.01 ;
+				// 
+
+				renderer.clear();
+
+				composer.render( 0.1 );
+				
+				playingTime = audioKeys.getCurrentTime();
+				
+				// simplified fps counter, implement moving average if more accuracy required
+				fpsCount ++;
+				
+				var runningTime = Date.now() - fullstart;
+				
+				
+				if (showStats) {
+					var avg = fpsCount/runningTime * 1000;
+					debugDiv.innerHTML = 'time: '+ playingTime.toFixed(2) 
+						+ '<br/>' + 'particles: ' + sparksEmitter._particles.length
+						+ '<br/>' + 'fps: ' + avg.toFixed(0);
+				}
+				
+			    getActions(playingTime, lastUpdateTime);
+
+			    lastUpdateTime = playingTime;
+				//
+				
+				if (runningTime>10000) {
+					// restart fps average after 10s
+					var avg = fpsCount/runningTime * 1000;
+					fpsCount = 0;
+					fullstart = Date.now();
+					
+					
+				}
+				
+				
+
+			}
+			
+			
+			
+			
+		musicStart();
+
+		</script>
+	
+
+
+	</body>
+</html>
