@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>Piano Theory in Color!</title>
+ <link rel="icon" href="./media/images/fav-48x48.png" type="image/x-icon" /> 
+ <script src="./min-script.js" type="text/javascript"></script><link href="./min-style.css" rel="stylesheet" type="text/css"/>
+ <script src="./audio/soundfont-midi.js" type="text/javascript"></script>
+ <script type="text/javascript">
+	//// Google Analytics
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-400768-7']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+ </script>
+</head>
+<body>
+<div id="head">
+	<div class="wrapper">
+		<div id="east"></div>
+		<div id="west"></div>
+	</div>
+</div>
+<div class="everything">
+	<div id="container">
+		<canvas id="animate" width="990"></canvas>
+		<canvas id="piano_bg" width="990"></canvas>
+		<canvas id="white_keys" width="990"></canvas>
+		<canvas id="black_keys" width="990"></canvas>
+		<div id="top">
+			<div id="east"></div>
+			<div id="west"></div>
+		</div>
+		<div id="keys"></div>
+	</div>
+</div>
+<div class="tools" onmousedown="this.style.display = 'none'">
+	<div id="tools" onmousedown="Event.stopPropagation(event);">
+		<li style="display:none">
+			<input id="taptap">
+			<input type="button" onmousedown="MusicTheory.tempoFromTap(this);" value="taptap">
+		</li>
+		<li style="display:none">
+			<input id="find">
+			<input type="button" onclick="MusicTheory.findChord(Piano.chords.tri)" value="find keys">
+		</li>
+		<span style="text-align: center; width: 100%; display: inline-block;">Drag & Drop MIDI files into your browser to view/play!</span>
+	</div>
+</div>
+<footer>
+<a href="http://mudcu.be/journal/2011/01/color-piano-theory/" title="Informatino on Piano Theory in Color!" target="_blank">About Color Piano</a>
+ by <a href="http://mudcu.be/" title="Blog of Michael Deal" target="_blank">Mudcu.be</a> 
+ <a href="http://twitter.com/#!/mudcube/"><img src="./images/twitter.png" align="absmiddle" width="28" height="28" style="box-shadow: 1px 1px 2px #000; border-radius: 4px;"></a>
+</div>
+</footer>
+</body>
+<script type="text/javascript">
+	/*
+		Piano Theory : 0.3.2.8 : 2011/12/31
+		--------------------------------
+		http://mudcu.be/piano/
+		--------------------------------
+		MIDI-files - http://www.kuhmann.com/Yamaha.htm
+		MIDI-reader/streamer - https://github.com/gasman/jasmid
+		MIDI-control - https://github.com/mudx/MIDIPlugin
+		Flash-fallback - http://www.schillmania.com/projects/soundmanager2/
+	*/
+	if (typeof(widgets.Loader) !== "undefined") {
+		var loader = new widgets.Loader({ message: "Color Piano" });
+	}
+</script>
+</html>

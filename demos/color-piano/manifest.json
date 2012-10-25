@@ -1,0 +1,18 @@
+{
+   "app": {
+      "launch": {
+         "local_path": "pianoChromeStore.html"
+      }
+   },
+   "description": "Learn how to play Piano without learning Sheet Music! Visualize the color of sound. Scales, Chords, Inversions & more!",
+   "icons": {
+      "128": "images/fav-128x128.png",
+      "16": "images/fav-16x16.png",
+      "48": "images/fav-48x48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCoEEtQmnXpcDxj/GYdsiQenFUU+T56gQYBYb0dQvxMRHaICasJYMv9UM8WbRSn6SYLjR8nXqAOzXXRIS3yNkJOQtPVh/vRuucjs/ZOY3fU9WBLD5hMzC3wr44k5L+Aa6UjNtNhtTtYsiAbGKXTYOHqD8m/l/PXRGnKqS0qNzVrfwIDAQAB",
+   "name": "Color Piano",
+   "offline_enabled": true,
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "0.3.2.12"
+}
