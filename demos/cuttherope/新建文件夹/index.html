@@ -1,0 +1,279 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cut the Rope</title>
+    <meta name="application-name" content="Cut the Rope" />
+    <meta name="msapplication-navbutton-color" content="#659729" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <meta property="og:title" content="Cut the Rope" />
+    <meta property="og:type" content="game" />
+    <meta property="og:image" content="fb.png" />
+    <meta property="og:site_name" content="Cut the Rope" />
+    
+    <link href="css/ctr.css" rel="stylesheet" type="text/css">
+    <script src="scripts/jquery-1.7.min.js" type="text/javascript"></script>
+    <script src="scripts/sm2.js" type="text/javascript"></script>
+    <script src="scripts/libraries.js" type="text/javascript"></script>
+    <script src="scripts/ctr.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        // html5 audio is unreliable in many browsers so its only enabled by default on
+        // IE9 or greater. You can force html5 audio by setting the querystring:
+        // http://www.cuttherope.ie/?html5audio=true
+        soundManager.useHTML5Audio = (isIE9OrGreater() || ZeptoLab.ctr.forceHTML5Audio);
+        soundManager.preferFlash = !soundManager.useHTML5Audio;
+
+        // initialize the game
+        ZeptoLab.ctr.run();
+    </script>
+
+    <noscript>
+        <link href="css/nojavascript.css" rel="stylesheet" type="text/css">
+    </noscript>
+
+</head>
+<body class="ctrCursor">
+
+    <div id="fb-root"></div>
+    <style  type="text/css">
+        .hideBeforeLoad, #loaderWindow, #popupWindow { display: none; }  
+    </style>
+
+    <div id="bg"></div>
+    <div id="vignette-left"></div>
+    <div id="vignette-right"></div>
+    <div id="vignette-bottom"></div>
+    <div id="umbrella"></div>
+
+    <div id="moreLink" class="hideBeforeLoad" >
+        <canvas id="moreCanvas"></canvas>
+        <a href="/dev/" target="_blank"><img src="images/page/dev-front.png" /></a>
+    </div>
+
+    <div id="gameContainer" class="hideBeforeLoad" >
+        <div id="gameShadow"></div>
+        <div id="gameBorder"></div>
+        <div id="gameArea">
+            <canvas id="c"></canvas>
+            <canvas id="hiddenCanvas"></canvas>
+            <div id="loadingPanel" class="panel"></div>
+
+            <div id="menuBackground" class="panel"></div>
+            <div id="levelBackground" class="panel">
+                <canvas id="levelCanvas"></canvas>
+                <div id="levelTape" class="levelTape"></div>
+            </div>
+
+            <div id="shadowPanel" class="panel">
+                <canvas id="shadowCanvas" width="1024" height="576"></canvas>
+            </div>
+            <div id="menuPanel" class="panel seethrough">
+                <div class="panelContent">
+                    <div id="menuLogo" ></div>
+                    <div id="menuBtnVbox" class="fBtnVBox">
+                        <div id="playBtn" class="fBtn"><img src="" /></div>
+                        <div id="optionsBtn" class="fBtn"><img src="" /></div>
+                    </div>
+                </div>
+                <div id="miniOptionsMenu">
+                    <div id="optionSd"></div>
+                    <div id="optionHd"></div>
+                    <div id="optionSound" class="ctrPointer"></div>
+                    <div id="optionMsg"></div>
+                </div>
+            </div>
+
+            <div id="boxPanel" class="panel seethrough">
+                
+                <div id="boxScore"><img src="" /></div>
+
+
+                <div id="boxes">
+                    <div id="box1" class="iconBtn boxOption" data-box="1">
+                        <canvas id="box1canvas" class="iconBtn boxCanvas"></canvas>
+                    </div>
+                    <div id="box2" class="iconBtn boxOption" data-box="2">
+                        <canvas id="box2canvas" class="iconBtn boxCanvas"></canvas>
+                    </div>
+                    <div id="box3" class="iconBtn boxOption" data-box="3">
+                        <div id="pinnedBoxMsg" >
+                            <img src="images/ui/ie9msg.png" class="useHD" />
+                            <img src="images/ui-sd/ie9msg.png" class="useSD" />
+                        </div>
+                        <canvas id="box3canvas" class="iconBtn boxCanvas"></canvas>
+                        <div id="iePrompt">
+                            <div id="installieBtn" class="fBtn"><img src="" /></div>
+                            <div id="iePromptMsg"></div>
+                            <div id="installieText">
+                                By clicking "Free Download" you agree to the Internet Explorer <a href="http://go.microsoft.com/fwlink/?linkid=190256">software license terms</a>.<br /><a href="http://go.microsoft.com/fwlink/?linkid=208757">Privacy Statement</a> | <a href="http://windows.microsoft.com/en-us/internet-explorer/products/ie-9/system-requirements">System Requirements</a>
+                            </div>
+                        </div>
+                        <div id="pinPrompt">
+                            <div id="showMeBtn" class="fBtn"><img src="" /></div>
+                            <div id="pinPromptMsg"></div>
+                            <div id="pinChair"></div>
+                            <div id="pinChairShadow"></div>
+                            <div id="pinTaskBar"></div>
+                            <div id="pinOmNom">
+                                <img src="images/ui/pin-omnom.png" class="msPinSite useHD" />
+                                <img src="images/ui-sd/pin-omnom.png" class="msPinSite useSD" />
+                                <div id="pinCursor"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="box4" class="iconBtn boxOption" data-box="4"></div>
+                </div>
+
+                <div id="boxNavBack">
+                    <div class="boxNavDisabled">
+                    </div>
+                </div>
+                <div id="boxNavForward">
+                    <div>
+                    </div>
+                </div>
+                <div id="boxBack" class="bBtn">
+                </div>
+            </div>
+            <div id="levelPanel" class="panel">
+                <div id="levelScore">
+                    <img src="" /></div>
+                <div id="levelBack" class="bBtn">
+                </div>
+                <div id="levelOptions">
+                    <div id="option1" class="option open ctrPointer">
+                        <div class="txt">
+                            <img src="images/ui/txt_1.png" alt="" /></div>
+                        <div class="stars0">
+                    </div>
+                    </div>
+                    <div id="option2" class="option locked ctrPointer"></div>
+                    <div id="option3" class="option locked ctrPointer"></div>
+                    <div id="option4" class="option locked ctrPointer"></div>
+                    <div id="option5" class="option locked ctrPointer"></div>
+                    <div id="option6" class="option locked ctrPointer"></div>
+                    <div id="option7" class="option locked ctrPointer"></div>
+                    <div id="option8" class="option locked ctrPointer"></div>
+                    <div id="option9" class="option locked ctrPointer"></div>
+                </div>
+                <div id="levelResults">
+                    <div id="resultStatus"><img src="" /></div>
+                    <div class="starCase">
+                        <div id="resultStar1" class=""></div>
+                        <div id="resultStar2" class=""></div>
+                        <div id="resultStar3" class=""></div>
+                    </div>
+                    <div id="resultTicker">
+                        <div id="resultTickerLabel"></div>
+                        <div id="resultTickerValue"></div>
+                        <div id="resultTickerMessage">Your Final Score</div>
+                    </div>
+                    <div class="line"></div>
+                    <div id="resultScore"></div>
+                    <div class="btnCase">
+                        <div id="replayBtn" class="sBtn"><img src="" /></div>
+                        <div id="lrMenuBtn" class="sBtn"><img src="" /></div>
+                        <div id="nextBtn" class="sBtn"><img src="" /></div>
+                    </div>
+                    <div id="resultImproved"></div>
+                </div>
+            </div>
+
+            <div id="gameCompletePanel" class="panel">
+                <div id="finalScore"><img src="" /></div>
+                <div id="finalShareBtn" class="mBtn"><img src="" /><div id="ffb"></div></div>
+                <a href="http://www.zeptolab.com/ctr" id="finalFunBtn" class="lBtn" target="_blank"><img src="" /><div id="funOmNom"></div></a>
+                <div id="gameCompleteBack" class="bBtn"></div>
+            </div>
+
+            <div id="optionsPanel" class="panel">
+                <div class="fBtnVBox">
+                    <div id="optionsTitle"><img src="" /></div>
+                    <div id="soundBtn" class="fBtn"><img src="" /></div>
+                    <div id="musicBtn" class="fBtn"><img src="" /></div>
+                    <div id="cutBtn" class="fBtn"><img src="" /></div>
+                    <div id="creditsBtn" class="fBtn"><img src="" /></div>
+                    <div id="resetBtn" class="fBtn"><img src="" /></div>
+                </div>
+                <div id="optionsBack" class="bBtn"></div>
+            </div>
+            <div id="d" class="panel ctrPointer">
+                <img id="dmsg" />
+                <div id="dframe">
+                    <div id="dpic"></div>
+                </div>
+                <div id="dshareBtn" class="fBtn"><img src="" /><div id="dfb"></div></div>
+            </div>
+            <div id="gameBtnTray">
+                <div id="gameMsg" class="allSound"></div>
+                <div id="gameSound" class="ctrPointer allSound"></div>
+                <div id="gameRestartBtn" class="ctrPointer"></div>
+                <div id="gameMenuBtn" class="ctrPointer"></div>
+            </div>
+            <div id="levelMenu">
+                <div class="fBtnVBox">
+                    <div id="continueBtn" class="fBtn"><img src="" /></div>
+                    <div id="skipBtn" class="fBtn"><img src="" /></div>
+                    <div id="selectBtn" class="fBtn"><img src="" /></div>
+                    <div id="menuBtn" class="fBtn"><img src="" /></div>
+                </div>
+            </div>
+
+            <div id="boxCutter">
+            </div>
+            <div id="tapeRoll">
+            </div>
+            <video id="vid" class="ctrPointer"></video>
+            <div id="fadeToBlack" class="panel"></div>
+        </div>
+        <div id="ieLink"></div>
+        <a href="http://www.zeptolab.com/ctr" id="ctrLink"></a>
+        <canvas id="e"></canvas>
+
+    </div>
+    <div id="loaderWindow">
+        <div id="loaderBubbles">
+            <img id="loaderLogo" src="images/page/loader-logo.png" />
+            <div id="loaderCanvasHost">
+                <canvas id="loaderCanvas" />
+            </div>
+        </div>
+    </div>
+
+    <div id="upgrade">
+        <div id="upgrade-header"></div>
+        <a id="upgrade-button" href="http://windows.microsoft.com/ie"></a>
+        
+    </div>
+
+    <div id="popupWindow">
+        <div class="popupOuterFrame">
+            <div class="popupInnerFrame" id="slowComputer">
+                <div class="fBtn" id="slowComputerBtn" style="position: absolute; bottom: 35px; left: 50px;"><img src="" /></div>
+            </div>
+        </div>
+    </div>
+    <footer id="gameFooter">
+        <div id="gameFooterContainer">
+            <div id="gameFooterLinks" class="hideBeforeLoad">
+                <img class="zeptoLogo" src="images/page/zeptologo.png"  />
+                <a href="http://zeptolab.com" target="_blank">&copy; 2012 ZeptoLab</a>
+                <img class="dot" src="images/page/footerdot.png" />
+                <a href="terms.html" target="_blank">Terms and Conditions</a>
+                <img class="dot" src="images/page/footerdot.png" />
+                <a href="privacy.html" target="_blank">Privacy</a>
+                <img class="dot" src="images/page/footerdot.png" />
+                <a href="/dev/" target="_blank">Behind the Scenes</a>
+            </div>
+            <div id="gameFooterSocial">
+                <div class="fb-like" data-href="http://www.cuttherope.ie" data-send="false" data-layout="button_count" data-width="0" data-show-faces="false" ref="footer"></div>            
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.cuttherope.ie" data-text='HTML5-powered "Cut the Rope" comes to the web!' data-hashtags="html5" >Tweet</a>
+            </div>
+        </div>
+
+    </footer>
+</body>
+</html>
+
