@@ -1,0 +1,280 @@
+/* TODO: Make all css3 stuff as crossbrowser as possible. */
+
+
+#silk { }
+    
+    #xxxsilk-logo {
+        position: absolute;
+        width: 45px;
+        height: 22px;
+        top: 30px;
+        left: 50%;
+        margin-left: -440px;
+        background: url(logo.png) no-repeat;
+    }
+
+    #canvii canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		
+    	display: block;
+    	xbackground: transparent;
+    	cursor: pointer;
+
+    }
+
+	#resize-canvas {
+		width: 400px;
+		display: none;
+	}	
+
+    #render {
+    	z-index: 10;
+    }
+
+    #edit {
+    	z-index: 20;
+    }
+    
+    #full-screenshot {
+        position: absolute;
+        right: 0;
+        width: 200px;
+        z-index: 101;
+		display: none;
+    }
+    
+#controls-bottom {
+    
+    display: none;
+    
+    position: absolute;
+    z-index: 100;
+    bottom: 10px;
+    left: 30px;
+
+}
+
+    #controls-bottom a {
+        text-decoration: none;
+        font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        color: #413e54;
+        color: #2d2b3b;
+        text-shadow: 1px 1px 2px #000;
+        padding-right: 15px;
+    
+        -webkit-transition: color 0.2s ease-out;
+        transition: color 0.2s ease-out;
+    }
+
+    #controls-bottom a:hover {
+        color: #7972aa;
+    }
+
+    #controls-bottom a:active {
+        color: #403d58;
+    }
+
+#controls {
+    position: absolute;
+    top: 0;
+
+    left: 30px;
+    width: 155px;
+    height: 93px;
+    z-index: 100;
+    overflow: visible;
+    background: url(logo.png) right 25px no-repeat;
+    display: none;
+    
+}
+
+    #controls-inner {
+        position: absolute;
+        top: 0;
+        left: 4px;
+        xoverflow: hidden;
+    }
+
+    
+	a.control {
+	    position: relative;
+	    margin-top: 0;
+		display: block;
+		width: 48px;
+	    height: 93px;
+		float: left;
+        opacity: 0.9;
+		-webkit-transition: opacity 200ms ease-out;
+		transition: opacity 200ms ease-out;
+		text-decoration: none;
+		z-index: 50;
+    }
+    
+    a.control:hover {
+        opacity: 1;
+    }
+    
+    a.control .label {
+        position: absolute;
+        top: 75px;
+        color: #ccc;
+        font: 12px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        margin-top: 15px;
+        text-align: center;
+        width: 40px;
+        margin-left: 2px;
+        
+        /* ! */
+        opacity: 0.6;
+        
+        
+        -webkit-transition: opacity 200ms ease-out;
+        transition: opacity 200ms ease-out;
+        text-shadow: 2px 2px 5px #000;
+    }
+    
+    a.control:hover .label {
+        opacity: 1;
+    }
+    
+	#new { background: url(ribbon-new.png) top left no-repeat; }
+	#new:hover { background: url(ribbon-new.png) top right no-repeat; }
+	#new:active { background: url(ribbon-new.png) top left no-repeat; }
+	
+	#share { background: url(ribbon-share.png) top left no-repeat; }
+	#share:hover { background: url(ribbon-share.png) top right no-repeat;  }
+	#share:active { background: url(ribbon-share.png) top left no-repeat; }
+	.share-open #share {
+	    opacity: 1;
+	}    
+
+#tip,
+#silk-status {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    margin-left: -300px;
+    
+    width: 600px;
+    color: #2d2b3a;
+    color: #373547;
+    z-index: 15;
+    text-align: center;
+    font: 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: none;
+    
+    text-shadow: 5px 5px 5px #000;
+}
+
+
+#silk-status {
+    color: #b6b3ce;
+}
+
+
+
+#share-window {
+    position: absolute;
+    top: 70px;
+    left: 77px;
+    width: 219px;
+    height: 304px;
+    background: url(bg-share-window.png) no-repeat;
+    z-index: 100;
+
+    display: none;
+}
+
+    #share-screenshot-shine {
+        position: absolute;
+        top: 6px;
+        left: 7px;
+        width: 205px;
+        height: 115px;
+        background: url(share-screenshot-shine.png);
+        z-index: 55;
+    }
+    
+    #share-screenshot {
+        position: absolute;
+        top: 6px;
+        left: 7px;
+        width: 205px;
+        height: 115px;
+        z-index: 54;
+        overflow: hidden;
+        
+        
+    }
+    
+    #share-screenshot canvas { 
+        display: block;
+        width: 205px;
+        height: 115px;
+    }
+    
+    #share-content {
+        position: absolute;
+        top: 121px;
+        left: 7px;
+        width:  185px;
+        height: 156px;
+
+        
+        color: #c0c3dc;
+        font: 11px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+        
+    }
+    
+        #share-content p {
+            font-size: 12px;
+        }
+
+        #share-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            color: #64598d;
+        }
+
+        #share-loading p {
+            margin-bottom: 10px;
+        }
+                
+        #share-links {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+        }
+        
+        #share-links p {
+            margin-bottom: 20px;
+        }
+    
+    #share-content a {
+        color: #595c7a;
+        text-decoration: none;
+        border-bottom: 1px solid #27283a;
+        padding-bottom: 1px;
+    }
+    
+    #share-content a:hover {
+        color: #7e81a2;
+        border-bottom-color: #636683;
+    }
+
+    #twitter-wrap,
+    #facebook-wrap {
+    	margin: 10px 0;
+    	overflow: none;
+    }
+

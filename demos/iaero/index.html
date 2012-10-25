@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+
+
+	<title>梦幻星空---iaero HTML5实验室---Beesware2011</title>
+
+	<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+	<meta name="description" content="发挥你的想象，制作你自己的梦幻星空." />
+	<meta name="keywords" content="梦幻星空" />
+
+	<!-- <meta name="viewport" content="width=device-width" />
+	
+	<meta name = "viewport" content = "width = device-width"> -->
+	<!-- To set the initial scale to 1.0, add this to your HTML file:
+	<meta name = "viewport" content = "initial-scale = 1.0"> -->
+	
+	<link rel="stylesheet" type="text/css" media="screen,projection" href="img/style.css" />
+	<link rel="stylesheet" type="text/css" media="screen,projection" href="img/silkstyle.css" />
+
+	<script src="js/all.compiled.js"></script>
+
+        <script src="js/base64.js"></script>
+        <script src="js/canvas2image.js"></script>
+<script>
+/* 
+* Canvas2Image.saveAsXXXX = function(oCanvasElement, bReturnImgElement, iWidth, iHeight) { ... } 
+*/  
+function saveme(){      
+var oCanvas = document.getElementById("render");  
+      
+Canvas2Image.saveAsPNG(oCanvas);  // will prompt the user to save the image as PNG.  
+}      
+</script>
+	<script type="text/javascript">
+<!--
+$(function() {
+
+			
+			if ($.browser.msie && $.browser.version < 9) // 看看IE9可不可以运行...
+		        $('body').addClass('ie')
+		})
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+	
+    <style type="text/css">
+<!--
+.STYLE1 {color: #990099}
+.STYLE2 {color: #993399}
+.STYLE3 {color: #996699}
+.STYLE4 {color: #999999}
+.STYLE5 {color: #99CC99}
+.STYLE6 {color: #99FF99}
+.STYLE7 {color: #0000FF}
+.STYLE8 {color: #0033FF}
+.STYLE9 {color: #0066FF}
+.STYLE10 {color: #0099FF}
+.STYLE11 {color: #00CCFF}
+.STYLE12 {color: #00FFFF}
+.STYLE13 {color: #CCFF00}
+.STYLE14 {color: #CCCC00}
+.STYLE15 {color: #CC9900}
+.STYLE16 {color: #CC6600}
+.STYLE18 {color: #CC3300}
+.STYLE19 {color: #CC0000}
+.STYLE20 {color: #FF0000}
+.STYLE21 {color: #33FFFF}
+.STYLE22 {color: #33FFCC}
+.STYLE23 {color: #33FF99}
+.STYLE24 {color: #33FF66}
+.STYLE25 {color: #33FF33}
+.STYLE26 {color: #33FF00}
+.STYLE27 {color: #CC33FF}
+.STYLE28 {color: #CC33CC}
+.STYLE29 {
+	color: #CC3399;
+	font-weight: bold;
+}
+.STYLE30 {color: #CC3366}
+.STYLE31 {color: #CC3333}
+.STYLE32 {color: #FF3300}
+.STYLE33 {color: #FF6600}
+.STYLE34 {color: #FF9900}
+.STYLE35 {color: #FFCC00}
+.STYLE36 {color: #FFFF00}
+.STYLE37 {color: #FFFF33}
+.STYLE38 {color: #FFFF66}
+.STYLE39 {color: #00FF00}
+.STYLE40 {color: #00FF33}
+.STYLE41 {color: #00FF66}
+.STYLE44 {color: #00FFCC}
+.STYLE45 {color: #0000CC}
+.STYLE46 {color: #000099}
+.STYLE47 {color: #000066}
+.STYLE48 {color: #000033}
+.STYLE49 {color: #66CCFF}
+.STYLE50 {color: #6699FF}
+.STYLE52 {color: #6633FF}
+.STYLE53 {color: #6600FF}
+.STYLE54 {color: #6600CC}
+.STYLE55 {color: #660099}
+.STYLE56 {color: #660066}
+.STYLE57 {color: #660033}
+.STYLE58 {color: #660000}
+.STYLE59 {color: #990000}
+.STYLE60 {color: #FFFFFF}
+.STYLE63 {color: #C0C0C0}
+.STYLE64 {color: #ABABAB}
+.STYLE65 {color: #969696}
+.STYLE66 {color: #818181}
+.STYLE67 {color: #6C6C6C}
+.STYLE68 {color: #575757}
+.STYLE69 {color: #424242}
+.STYLE70 {color: #2D2D2D}
+.STYLE71 {color: #181818}
+#Layer1 {
+	position:absolute;
+	width:582px;
+	height:115px;
+	z-index:1;
+	left: 39px;
+	top: 475px;
+}
+.STYLE72 {
+	color: #990099;
+	font-size: 18px;
+	font-weight: bold;
+}
+.STYLE73 {font-size: 18px}
+.STYLE74 {color: #FFFFFF; font-weight: bold; }
+#Layer2 {
+	position:absolute;
+	width:334px;
+	height:211px;
+	z-index:2;
+	left: 762px;
+	top: 506px;
+}
+.STYLE76 {color: #00FF99; font-weight: bold; }
+.STYLE78 {color: #6666FF; font-weight: bold; }
+.STYLE79 {font-size: 16px}
+.STYLE80 {
+	font-size: 24px;
+	font-weight: bold;
+}
+.STYLE81 {color: #FFFFFF; font-size: 36px; }
+#Layer3 {
+	position:absolute;
+	width:132px;
+	height:62px;
+	z-index:102;
+	left: 892px;
+	top: 13px;
+}
+#logo {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:3;
+	left: 6px;
+	top: 37px;
+}
+#Layer4 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:17;
+	left: -185px;
+	top: 0px;
+}
+.STYLE83 {
+	color: #FF0000;
+	font-size: 18px;
+	font-family: "微软雅黑";
+}
+.STYLE84 {color: #993399; font-size: 18px; }
+.STYLE86 {color: #00FFFF; font-weight: bold; }
+#Layer5 {
+	position:absolute;
+	width:200px;
+	height:40px;
+	z-index:18;
+	left: 524px;
+	top: 221px;
+}
+#Layer6 {
+	position:absolute;
+	width:84px;
+	height:43px;
+	z-index:18;
+	left: 606px;
+	top: 226px;
+	background-color: #005EDF;
+}
+.STYLE87 {color: #005EDF}
+-->
+    </style>
+</head>
+<body>
+
+	
+<div id="page">
+	  <div id="silk">
+
+			<div id="silk-shadow"></div>
+			
+			<img id="full-screenshot" />
+			<div id="silk-inner" class="inner">
+				<div id="poster-silk"></div>
+				<div id="silk-introduction"></div>
+				<div id="Layer4">
+				  <p><a href="#"><img src="img/logo_main.png" alt="" width="196" height="97" vspace="0" /></a></p>
+				</div>
+				<div id="silk-instructions"></div>
+
+				<div id="silk-instructions-bg" onmousedown="MM_showHideLayers('logo','','hide')"></div>
+        </div>
+				
+		<div id="melogo" align="right"></div>
+			<div id="controls">	
+				<div id="controls-inner">
+
+					<a class="control" id="new" href="#new"></a>
+					<a href="#" class="control" id="share" onclick="MM_callJS('saveme()')"></a>				</div>
+			</div>
+
+			
+			<div id="controls-bottom">
+				<a href="#replay" id="replay">重播星空</a>
+				<a href="#speed-control" id="speed-control">加速</a>			</div>
+			
+			
+				
+			<div id="share-window">
+				<div id="share-screenshot-container">
+					<div id="share-screenshot-shine"></div>
+					
+					<div id="share-screenshot">
+                        <div align="center"><table width="200" height="154" border="0">
+  <tr>
+    <td class="STYLE60"> &nbsp;&nbsp;注意哦！你的美丽星空将被保存为PNG格式，便于使用PS软件编辑！</td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+</table>
+                        </div>
+                        <canvas width="205" height="115" id="resize-canvas"><div align="center"></div></canvas>
+					</div>
+				</div>
+			</div>
+			
+			<!-- -->
+
+			<div id="canvii">
+				<canvas width="1" height="1" id="edit">亲，你遇到麻烦了！这个应用只适用于支持canvas的浏览器，你的浏览器伤不起，伤不起！快去下载<a href="http://www.mozilla.com/">Firefox</a>、<a href="http://www.google.com/chrome">Chrome</a>或者<a href="http://www.opera.com/">opera</a>.还等什么，快去啊！有木有！有木有！</canvas>
+				<canvas width="1" height="1" id="render"></canvas>
+			</div>
+
+			<!-- -->
+			
+			<div id="silk-status"></div>
+			
+			<div id="tip">
+				<p>按住 <b>Shift</b> 移动鼠标改变星空飞舞的方向.</p>
+				
+				<p>按下 <b>S</b> 来让你的星空停止运动.</p>
+
+				<p>按下 <b>X</b> 重建一个新的星空.</p>
+				<p>如丝的梦幻星空~~~~从你的鼠标开始~~~</p>
+			</div>
+	  </div>
+<div id="gallery" class="clearfix">
+  <div id="Layer1">
+    <div class="content">
+		
+					<h2 class="STYLE81" id="h-about">--梦幻星空--</h2>
+					<p class="STYLE74">&nbsp;</p>
+					<p class="STYLE72">如<span class="STYLE2">丝<span class="STYLE3">的</span></span><span class="STYLE4">梦</span><span class="STYLE5">幻星</span><span class="STYLE6">空~~~~   </span><span class="STYLE7">唯</span><span class="STYLE8">美</span><span class="STYLE9">的</span><span class="STYLE10">桌</span><span class="STYLE11">面背</span><span class="STYLE12">景~~~ </span><span class="STYLE13">从</span><span class="STYLE14">你</span><span class="STYLE15">的</span><span class="STYLE16">鼠</span><span class="STYLE18">标</span><span class="STYLE19">开始</span><span class="STYLE20">~~~</span></p>
+					<p class="STYLE73">&nbsp;</p>
+					<p class="STYLE80"><span class="STYLE21">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;移</span><span class="STYLE22">动</span><span class="STYLE23">鼠</span><span class="STYLE24">标</span><span class="STYLE25">，展示美</span><span class="STYLE26">丽~~~</span></p>
+					<p>&nbsp;</p>
+	  </div>
+  </div>
+	   
+	  <div id="Layer2">
+	    <p class="STYLE79"><span class="STYLE27">（</span><span class="STYLE28">按住</span><span class="STYLE29">shift</span><span class="STYLE30">移</span><span class="STYLE31">动鼠</span><span class="STYLE19">标</span><span class="STYLE20">改</span><span class="STYLE32">变<span class="STYLE33">星</span></span><span class="STYLE34">空<span class="STYLE35">飞</span></span><span class="STYLE36">舞</span><span class="STYLE37">的</span><span class="STYLE38">方向）</span></p>
+	    <p class="STYLE79">&nbsp;</p>
+	    <p class="STYLE79"><span class="STYLE39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（</span><span class="STYLE40">按</span><span class="STYLE41">下</span>&nbsp;<span class="STYLE76">S</span>&nbsp;<span class="STYLE44">来</span><span class="STYLE12">让</span><span class="STYLE11">你</span><span class="STYLE10">的</span><span class="STYLE9">星<span class="STYLE8">空</span></span><span class="STYLE7">停</span><span class="STYLE45">止</span><span class="STYLE46">运</span><span class="STYLE47">动</span><span class="STYLE48">）</span></p>
+	    <p class="STYLE79">&nbsp;</p>
+	    <p class="STYLE79"><span class="STYLE49">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（按</span><span class="STYLE50">下</span>&nbsp;<span class="STYLE78">X</span>&nbsp;<span class="STYLE52">重</span><span class="STYLE53">建</span><span class="STYLE54">一</span><span class="STYLE55">个<span class="STYLE56">新</span></span><span class="STYLE57">的<span class="STYLE58">星</span></span><span class="STYLE59">空</span><span class="STYLE20">）</span></p>
+	    <p class="STYLE79">&nbsp;</p>
+	    <p class="STYLE79" onclick="MM_callJS('saveme();')">&nbsp;</p>
+	  </div>
+</div>
+		<div id="header" class="clearfix">
+		  <div id="header-inner" class="inner">
+				<div class="content">
+				  <p class="STYLE1">&nbsp;</p>
+				  <p class="STYLE1">&nbsp;</p>
+		    </div>
+				
+		        <p>&nbsp;</p>
+		  </div>
+			<!-- <div id="wallpapers-inner" class="inner"> -->
+			<div id="wallpapers" class="inner">
+				<div class="content">
+					<h2 id="h-wallpaper">美丽壁纸</h2>
+					
+					<p><span class="STYLE60">下</span><span class="STYLE63">载</span><span class="STYLE64">已</span><span class="STYLE65">制</span><span class="STYLE66">作</span><span class="STYLE67">好<span class="STYLE68">的</span></span><span class="STYLE69">美丽</span><span class="STYLE70">壁</span><span class="STYLE71">纸~~~</span></p>
+					<div id="wallpaper-links">
+
+						<p><a href="img/wallpapers/blue_light.jpg" bg_src="url(img/wall-imac-blue-light.png)">蓝色律动</a></p>
+						<p><a href="img/wallpapers/rainbow_light.jpg" bg_src="url(img/wall-imac-rainbow-light.png)">彩虹世界</a></p>
+						<p><a href="img/wallpapers/red_light.jpg" bg_src="url(img/wall-imac-red-light.png)">活力烈焰</a></p>
+
+						<p><a href="img/wallpapers/rainbow_dark.jpg" bg_src="url(img/wall-imac-rainbow-dark.png)">绚丽星空</a></p>
+					</div>
+				</div>
+
+				
+				<div id="wall-imac">
+					<div id="wall-example"></div>
+			  </div>
+			</div>
+		</div>
+		
+
+			<div id="ie-coverup"></div>
+			<div id="ie-sorry-bg">eee</div>
+			<div id="ie">
+
+				<div class="inner">
+					<p>&nbsp;</p>
+					<p>亲，你遇到麻烦了！</p>
+					<p>这个应用只适用于支持canvas的浏览器，你的浏览器伤不起，伤不起！快去下载<a href="http://www.mozilla.com/">Firefox</a>、<a href="http://www.google.com/chrome">Chrome</a>或者<a href="http://www.opera.com/">opera</a>.</p>
+                    <p>还等什么，快去啊！有木有！有木有！</p>
+				</div>
+			</div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <span class="STYLE5">Version 1.01    </span>                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;<a href="../index.html"><img src="img/beesware.png" alt="beesware" width="100" height="67" /></a><span class="STYLE83">蜂窝必思沃</span><span class="STYLE84"> Beesware</span><span class="STYLE86"> QQ：792099757</span><span class="STYLE26">&nbsp;&nbsp;Email：mgbbs.mail@gmai.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捐助：支付宝（792099757@qq.com）</span></div>
+	
+    <p>&nbsp;</p>
+</body>
+</html>
