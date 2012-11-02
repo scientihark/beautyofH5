@@ -1,0 +1,24 @@
+#header_con_pre,#header_con_next {
+	display:none;
+}
+.noneplay2,.nowplay,.noplay,.noneplay {
+	font-size:0.8em;
+}
+.lrc_1 {
+	font-size:0.4em;
+}
+.lrc_2 {
+	font-size:0.7em;
+}
+.lrc_3 {
+	font-size:1em;
+}
+.lrc_4 {
+	font-size:1.6em;
+}
+.lrc_5 {
+	font-size:1em;
+}
+.lrc_6 {
+	font-size:0.7em;
+}

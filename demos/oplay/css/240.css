@@ -1,0 +1,40 @@
+.lrc_1 {
+	font-size:0.1em;
+}
+.lrc_2 {
+	font-size:0.3em;
+}
+.lrc_3 {
+	font-size:0.5em;
+}
+.lrc_4 {
+	font-size:1em;
+}
+.lrc_5 {
+	font-size:0.5em;
+}
+.lrc_6 {
+	font-size:0.3em;
+}
+#fft {
+	bottom:100px;
+	width:240px;
+	height:50px;
+}
+#fft {
+	bottom:30px;
+	width:240px;
+	height:50px;
+}
+#player_list_pre,#player_list_next {
+	font-size:1em;
+}
+.player_list_pre_none,.player_list_pre_now{
+	left:20px;
+}
+.player_list_next_none,.player_list_pre_now {
+	right:20px;
+}
+#loading_ver{
+	font-size:0.5em;
+}

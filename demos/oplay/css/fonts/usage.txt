@@ -1,0 +1,17 @@
+文泉驿微米黑 WEBfont  v0.1.0
+
+手工精简去除非常用字符（非常用字、繁体、其他语）
+仅保留6000余字（还可精简）
+
+难免遗漏误删一些字，删除的字符会使用系统自带unicode字符补全，看起来有一定差别。欢迎报告缺漏的常用字：mgbbs.mobile@gmail.com或scientihark@qq.com
+
+谢谢
+
+
+用法：
+@font-face {
+ font-family: 'WenQuanYi - Micro Hei webf';
+ font-style: normal;
+ font-weight: normal;
+ src: local('文泉驿微米黑'), url('fonts/WenQuanYiMicroHeiwebf.woff') format('woff'),url('fonts/WenQuanYiMicroHeiwebf.ttf') format('truetype'),url('fonts/WenQuanYiMicroHeiwebf.svg#WenQuanYiMicroHeiwebf') format('svg');
+}

@@ -1,0 +1,53 @@
+#header_con_pre,#header_con_next {
+	display:none;
+}
+#header_con_soundctn {
+	display:none;
+	
+}
+.noneplay2,.nowplay,.noplay,.noneplay {
+	font-size:0.7em;
+}
+.lrc_1 {
+	font-size:0.2em;
+}
+.lrc_2 {
+	font-size:0.5em;
+}
+.lrc_3 {
+	font-size:0.8em;
+}
+.lrc_4 {
+	font-size:1.2em;
+}
+.lrc_5 {
+	font-size:0.8em;
+}
+.lrc_6 {
+	font-size:0.5em;
+}
+#header_subcon {
+	display:none;
+}
+#fft {
+	bottom:100px;
+	width:512px;
+	height:80px;
+}
+#fft {
+	bottom:30px;
+	width:512px;
+	height:80px;
+}
+#player_list_pre,#player_list_next {
+	font-size:2em;
+}
+.player_list_pre_none,.player_list_pre_now{
+	left:40px;
+}
+.player_list_next_none,.player_list_pre_now {
+	right:40px;
+}
+#loading_ver{
+	font-size:0.8em;
+}
